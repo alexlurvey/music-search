@@ -1,0 +1,8 @@
+body {
+    margin: 0 auto;
+}
+
+.app-wrapper {
+    padding: 3em;
+    min-height: 100vh;
+}

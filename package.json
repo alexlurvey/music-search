@@ -5,23 +5,32 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build src/index.tsx -d public && cp index.html public",
+    "build": "yarn copy && parcel build src/index.tsx -d public",
+    "copy": "cp index.html public && cp node_modules/bulma/css/bulma.min.css public && cp styles.css public",
     "dev": "yarn build && ts-node server.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.6",
-    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4",
     "ts-node": "^8.10.1",
     "tslib": "^2.0.0",
     "typescript": "^3.9.3"
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bulma": "^0.8.2",
     "custom-env": "^2.0.1",
     "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  }
+  },
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 opera versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions"
+  ]
 }
