@@ -1,0 +1,6 @@
+{
+  "env": {
+    "LASTFM_BASE_URL": "http://ws.audioscrobbler.com/2.0/",
+    "LASTFM_API_KEY": "@lastfm_api_key"
+  }
+}
