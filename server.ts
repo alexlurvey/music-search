@@ -11,5 +11,5 @@ app.get('/api/artists', async (req: any, res: any) => {
   res.status(200).send(artists);
 })
 
-app.use(express.static('dist'))
+app.use(express.static('public'))
 app.listen(3000)
