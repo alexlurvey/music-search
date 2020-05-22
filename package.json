@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build src/index.ts -d public && cp index.html public",
+    "build": "parcel build src/index.tsx -d public && cp index.html public",
     "dev": "yarn build && ts-node server.ts"
   },
   "author": "",

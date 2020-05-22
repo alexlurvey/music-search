@@ -4,6 +4,7 @@
         "target": "es2015",
         "declaration": true,
         "jsx": "react",
+        "noImplicitAny": false,
         "allowSyntheticDefaultImports": true,
         "declarationMap": true,
         "experimentalDecorators": true,

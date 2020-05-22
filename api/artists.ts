@@ -1,4 +1,4 @@
-const repo = require('../repos/artists');
+const repo = require('../repos');
 
 module.exports = async (req, res) => {
   const data = await repo.searchArtists(req.query.search);
