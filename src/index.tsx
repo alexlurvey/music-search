@@ -1,19 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { IArtist } from './api';
-import { ArtistCard } from './components/ArtistCard';
-
-const fetchArtists = async (search: string): Promise<IArtist[]> => {
-	const response = await fetch(`api/artists?search=${search}`);
-	const data = await response.json();
-	return data;
-}
-
-const fetchTopArtists = async (): Promise<IArtist[]> => {
-	const response = await fetch('api/chart/topartists');
-	const data = await response.json();
-	return data;
-}
+import { fetchArtists, fetchTopArtists } from './fetch';
+import { ArtistCard } from './components';
 
 const App = () => {
 	const [ search, setSearch ] = useState<string>('');

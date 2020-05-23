@@ -1,18 +1,26 @@
+:root {
+    --gradient-one: #841C3B;
+    --gradient-two: #693D53;
+    --primary-color: linear-gradient(to right top, #841c3b, #7e2643, #782f4a, #70374f, #693d53);
+}
+
 body {
     margin: 0 auto;
 }
 
 #app {
-    background-image: linear-gradient(to right top, #521024, #6c293e, #86415b, #a05b79, #ba7598);
+    background-image: var(--primary-color);
 }
 
 .app-wrapper {
     padding: 3em;
     min-height: 100vh;
+    max-width: 1200px;
     animation: fadeIn 750ms;
 }
 
 .search-bar {
+    color: var(--gradient-two);
     font-size: 28px;
     margin-bottom: 0.25em;
 }
