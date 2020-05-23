@@ -1,6 +1,6 @@
-const repo = require('../repos');
+import { searchArtists } from '../repos';
 
 module.exports = async (req, res) => {
-  const data = await repo.searchArtists(req.query.search);
+  const data = await searchArtists(req.query.search);
   res.status(200).send(data);
 }
