@@ -53,11 +53,11 @@ const App = () => {
 			<div className={`${artistClass} box`}>
 				{ 
 					artists.length
-						? artists.map((a: IArtist) => (
+						? (
 							<div className='fade-in'>
-								<ArtistCard key={a.id || a.name} artist={a} />
-							</div>))
-						: (
+								{ artists.map((a: IArtist) => <ArtistCard key={a.id || a.name} artist={a} />) }
+							</div>
+						) : (
 							<h5 className='title is-5'>
 								Enter an artist name or <a onClick={handleTopArtistSearch}>search top artists</a>
 							</h5>
