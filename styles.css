@@ -2,7 +2,30 @@ body {
     margin: 0 auto;
 }
 
+#app {
+    background-image: linear-gradient(to right top, #521024, #6c293e, #86415b, #a05b79, #ba7598);
+}
+
 .app-wrapper {
     padding: 3em;
     min-height: 100vh;
+}
+
+.search-bar {
+    font-size: 28px;
+}
+
+.artist-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.artist-card-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.artist-card-icon a {
+    cursor: pointer;
 }

@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn copy && parcel build src/index.tsx -d public",
-    "copy": "cp index.html public && cp node_modules/bulma/css/bulma.min.css public && cp styles.css public",
+    "copy": "cp index.html public && cp node_modules/bulma/css/bulma.min.css public && cp styles.css public && cp -r assets public",
     "dev": "yarn build && ts-node server.ts"
   },
   "author": "",

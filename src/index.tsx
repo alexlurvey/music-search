@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { IArtist } from './api';
+import { ArtistCard } from './ArtistCard';
 
 const fetchArtists = async (search: string): Promise<IArtist[]> => {
 	const response = await fetch(`api/artists?search=${search}`);
@@ -13,19 +14,15 @@ const App = () => {
 	const [ artists, setArtists ] = useState<any[]>([]);
 
 	const searchArtists = useCallback(async () => {
-		// TODO: validation
 		const artists = await fetchArtists(search);
 		setArtists(artists);
 	}, [search, setArtists])
 
 	return (
 		<div className='container app-wrapper'>
-			<h1 className='title is-2'>Search artists</h1>
-			<input type='text' value={search} onChange={(e) => setSearch(e.target.value)} />
+			<input className='input search-bar' type='text' placeholder='Search artists' value={search} onChange={(e) => setSearch(e.target.value)} />
 			<button onClick={_ => searchArtists()}>Search</button>
-			{
-				artists.map((a: IArtist) => <div>{a.name}</div>)
-			}
+			{ artists.map((a: IArtist) => <ArtistCard key={a.id} artist={a} />) }
 		</div>
 	)
 }
