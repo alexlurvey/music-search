@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { IArtist } from './api';
 import { ArtistCard } from './components/ArtistCard';
