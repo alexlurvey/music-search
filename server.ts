@@ -1,6 +1,6 @@
 require('custom-env').env()
-const express = require('express')
-const searchArtists = require('./repos').searchArtists
+import * as  express from 'express';
+import { searchArtists } from './repos';
 
 const app = express()
 

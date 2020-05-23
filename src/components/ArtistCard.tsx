@@ -1,6 +1,6 @@
 import React from 'react';
-import { IArtist } from './api';
-import { formatNumber } from './utils';
+import { IArtist } from '../api';
+import { formatNumber } from '../utils';
 
 export interface IArtistCardProps {
     artist: IArtist;
@@ -9,7 +9,7 @@ export interface IArtistCardProps {
 
 export const ArtistCard = ({ artist, key }: IArtistCardProps) => {
     return (
-        <div key={key} class='box artist-card'>
+        <div key={key} className='box artist-card'>
             <div>{artist.name}</div>
             <div>{formatNumber(artist.listeners)} listeners</div>
             <div className='artist-card-icon'>

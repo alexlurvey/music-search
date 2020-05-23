@@ -1,16 +1,15 @@
 export function formatNumber (num: string | number): string {
-    const n = num+'';
-    const parts = partition(n, 3, true);
-    return parts.reduceRight((acc, x) => acc.length ? `${acc},${x}` : x, '');
+    const parts = partition<string>(num.toString().split(''), 3, true);
+    return parts.reduceRight((acc: string, x: string[]) => acc.length ? `${acc},${x.join('')}` : x.join(''), '');
 }
 
-function partition(arr: string, partitionVal = 1, reverse = false) {
+function partition<T>(arr: T[], partitionVal = 1, reverse = false) {
     if (arguments.length === 2 && typeof(arguments[1]) === 'boolean') {
         reverse = arguments[1];
         partitionVal = 1;
     }
 
-    let result: string[] = [];
+    let result: T[][] = [];
 
     if (reverse) {
         for (let i = arr.length; i > 0; i -= partitionVal) {

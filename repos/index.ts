@@ -1,7 +1,6 @@
-const axios = require('axios')
-const mappers = require('./mappers')
+import axios from 'axios';
+import { artistXform } from './mappers';
 
-const { artistXform } = mappers;
 const { LASTFM_API_KEY, LASTFM_BASE_URL } = process.env;
 const lastfm = axios.create({ baseURL: LASTFM_BASE_URL })
 
