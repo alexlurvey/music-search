@@ -1,11 +1,9 @@
-/* Custom Properties */
 :root {
     --gradient-one: #841C3B; /* rgb(132,28,59) */
     --gradient-two: #693D53; /* rgb(105,61,83) */
     --primary-color: linear-gradient(to right top, #841c3b, #7e2643, #782f4a, #70374f, #693d53);
 }
 
-/* Home Page */
 body {
     margin: 0 auto;
 }
@@ -14,6 +12,7 @@ body {
     background-image: var(--primary-color);
 }
 
+/* App component */
 .app-wrapper {
     padding: 3rem;
     min-height: 100vh;
@@ -27,7 +26,13 @@ body {
     margin-bottom: 0.25rem;
 }
 
-/* Artist Card */
+@media (max-width: 450px) {
+    .app-wrapper {
+        padding: 2rem;
+    }
+}
+
+/* ArtistCard component */
 .artist-card-wrapper {
     margin-bottom: 0.25rem!important;
 }
@@ -52,6 +57,18 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 620px) {
+    .artist-card {
+        grid-template-columns: 90% 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .artist-card-icon {
+        grid-column: 2;
+        grid-row: 1 / 3;
+    }
+}
+
+/* ArtistDetails component */
 .artist-tags-wrapper {
     display: grid;
     grid-template-columns: 10% 1fr;
@@ -71,6 +88,41 @@ body {
 }
 .artist-details-wrapper p {
     margin-bottom: 1rem;
+}
+
+@media (max-width: 620px) {
+    .artist-tags-wrapper {
+        display: flex;
+        font-size: 70%;
+    }
+    .artist-tags-wrapper div:first-child {
+        margin-right: 0.5rem;
+    }
+    .artist-tags {
+        justify-content: start;
+        flex-wrap: wrap;
+    }
+    .artist-tags a:not(:last-child)::after {
+        content: "|";
+        margin: 0 0.25rem;
+    }
+}
+
+/* Filters component  */
+.filters {
+    display: flex;
+    margin-bottom: 0.25rem;
+}
+.filters input,
+.filters div:first-child {
+    margin-right: 5px;
+}
+.filters img {
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
 }
 
 /* Animations */
@@ -149,39 +201,4 @@ body {
 
 .fade-in {
     animation: fadeIn 500ms;
-}
-
-
-/* Responsive */
-@media (max-width: 620px) {
-    .artist-card {
-        grid-template-columns: 90% 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-    .artist-card-icon {
-        grid-column: 2;
-        grid-row: 1 / 3;
-    }
-
-    .artist-tags-wrapper {
-        display: flex;
-        font-size: 70%;
-    }
-    .artist-tags-wrapper div:first-child {
-        margin-right: 0.5rem;
-    }
-    .artist-tags {
-        justify-content: start;
-        flex-wrap: wrap;
-    }
-    .artist-tags a:not(:last-child)::after {
-        content: "|";
-        margin: 0 0.25rem;
-    }
-}
-
-@media (max-width: 450px) {
-    .app-wrapper {
-        padding: 2rem;
-    }
 }

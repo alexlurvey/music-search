@@ -27,3 +27,8 @@ export interface IArtistDetails {
         content: string;
     }
 }
+
+export enum OrderByOption {
+    Listeners = 'listeners',
+    Name = 'name',
+}
