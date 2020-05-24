@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { IArtist } from './api';
-import { fetchArtists, fetchTopArtists } from './fetch';
+import { IArtist, IArtistDetails, IObjectOf } from './api';
+import { fetchArtists, fetchTopArtists, fetchArtistDetails } from './fetch';
 import { ArtistCard } from './components';
 
 const App = () => {
@@ -9,6 +9,8 @@ const App = () => {
 	const [ timeoutId, setTimeoutId ] = useState<number>(0);
 	const [ artists, setArtists ] = useState<IArtist[]>([]);
 	const [ artistClass, setArtistClass ] = useState<string>('');
+	const [ details, setDetails ] = useState<IObjectOf<IArtistDetails>>({});
+	const [ selectedArtist, setSelectedArtist ] = useState<string | null>(null);
 
 	const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		const val = (e.target as HTMLInputElement).value
@@ -36,22 +38,37 @@ const App = () => {
 		setArtists(data);
 	}, [setArtists])
 
+	const onArtistClick = useCallback(async (name: string) => {
+		setSelectedArtist(name);
+		if (!details[name]) {
+			const deets = await fetchArtistDetails(name);
+			setDetails({ ...details, [name]: deets })
+		}		
+	}, [details, setDetails, setSelectedArtist])
+
 	return (
 		<div className='container app-wrapper'>
 			<input className='input search-bar' type='text' placeholder='Search artists' value={search} onChange={handleSearchChange} />
 			<div className={`${artistClass} box`}>
-				{ 
-					artists.length
-						? (
-							<div className='fade-in'>
-								{ artists.map((a: IArtist) => <ArtistCard key={a.id || a.name} artist={a} />) }
-							</div>
-						) : (
-							<h5 className='title is-5'>
-								Enter an artist name or <a onClick={handleTopArtistSearch}>search top artists</a>
-							</h5>
-						)
-				}
+			{
+				artists.length
+					? (
+						<div className='fade-in'>
+							{ artists.map((a: IArtist) =>
+								<ArtistCard 
+									key={a.id || a.name}
+									artist={a}
+									onClick={onArtistClick}
+									details={details[a.name]}
+									isSelected={a.name === selectedArtist}
+								/>) }
+						</div>
+					) : (
+						<h5 className='title is-5'>
+							Enter an artist name or <a onClick={handleTopArtistSearch}>search top artists</a>
+						</h5>
+					)
+			}
 			</div>
 		</div>
 	)

@@ -28,6 +28,9 @@ body {
 }
 
 /* Artist Card */
+.artist-card-wrapper {
+    margin-bottom: 0.25rem!important;
+}
 .artist-card-wrapper:hover {
     cursor: pointer;
     background-color: rgb(105,61,83, 0.3);
@@ -64,7 +67,7 @@ body {
     padding-top: 1rem;
     border-top: solid black 1px;
     transform: scaleY(0);
-    animation: slideDown 1s forwards;
+    animation: slideDown 0.5s forwards;
 }
 .artist-details-wrapper p {
     margin-bottom: 1rem;
@@ -92,12 +95,52 @@ body {
 @keyframes slideDown {
     from {
         transform-origin: top;
-        transform: scaleY(0)
+        transform: scaleY(0);
     }
     to {
         transform-origin: top;
-        transform: scaleY(1)
+        transform: scaleY(1);
     }
+}
+
+@keyframes loadingBackground {
+    0% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 0%, white 5%);
+    }
+    10% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 5%, white 10%);
+    }
+    20% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 10%, white 20%);
+    }
+    30% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 20%, white 25%);
+    }
+    40% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 35%, white 45%);
+    }
+    50% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 45%, white 55%);
+    }
+    60% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 55%, white 65%);
+    }
+    70% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 65%, white 75%);
+    }
+    80% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 75%, white 90%);
+    }
+    90% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 90%, white 100%);
+    }
+    100% {
+        background-image: linear-gradient(to right, rgb(132,28,59,0.3) 100%, white);
+    }
+}
+
+.card-loading {
+    animation: loadingBackground 0.75s ease-out infinite;
 }
 
 .fade-out {

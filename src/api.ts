@@ -1,3 +1,7 @@
+export interface IObjectOf<T> {
+    [key: string]: T;
+}
+
 type SimilarArtist = {
     name: string;
     url: string;
