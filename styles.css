@@ -139,7 +139,7 @@ body {
     }
 }
 
-.card-loading {
+.loading-background {
     animation: loadingBackground 0.75s ease-out infinite;
 }
 

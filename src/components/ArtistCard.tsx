@@ -7,6 +7,7 @@ export interface IArtistCardProps {
     key: string;
     details?: IArtistDetails;
     isSelected: boolean;
+    isLoading: boolean;
     onClick(name: string): void;
 }
 
@@ -36,8 +37,8 @@ const ArtistDetails = React.memo(({ details }: IArtistDetailsProps) => (
     </div>
 ))
 
-export const ArtistCard = React.memo(({ artist, key, details, isSelected, onClick }: IArtistCardProps) => (
-    <div key={key} className={`box artist-card-wrapper ${isSelected && !details ? 'card-loading': ''}`}>
+export const ArtistCard = React.memo(({ artist, key, details, isSelected, isLoading, onClick }: IArtistCardProps) => (
+    <div key={key} className={`box artist-card-wrapper ${isLoading && !details ? 'loading-background': ''}`}>
         <div className='artist-card' onClick={() => onClick(artist.name)}>
             <div>{artist.name}</div>
             <div>{formatNumber(artist.listeners)} listeners</div>
