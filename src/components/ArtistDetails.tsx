@@ -23,24 +23,24 @@ export const ArtistDetails = ({ className, artistInfo: { details, topAlbums} }: 
 
     return (
         <div className={`artist-details-wrapper ${className}`}>
-            <p>{details.bio.summary}</p>
+            <p>{details.bio ? details.bio.summary : ''}</p>
             <div className='album-images-wrapper'>
                 { albumUrls.map((a) => <a href={a.albumUrl} target='_blank'><img src={a.url} /></a> ) }
             </div>
             <div className='artist-tags-wrapper'>
                 <div>Similar:</div>
                 <div className='artist-tags'>
-                    { details.similar.map(({ name, url }) => (
+                    { details.similar ? details.similar.map(({ name, url }) => (
                         <a href={url} target='_blank'>{name}</a>
-                    ))}
+                    )) : null}
                 </div>
             </div>
             <div className='artist-tags-wrapper'>
                 <div>Tags:</div>
                 <div className='artist-tags'>
-                    { details.tags.map(({name, url}) => (
+                    { details.tags ? details.tags.map(({name, url}) => (
                         <a href={url} target='_blank'>{name}</a>
-                    ))}
+                    )) : null}
                 </div>
             </div>
         </div>

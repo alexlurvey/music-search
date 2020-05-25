@@ -21,7 +21,7 @@ export const searchArtists = async (search: string) => {
 export const getArtistDetails = async (name: string) => {
   try {
     const response = await lastfm.get<ILastFmArtistDetailsResponse>(`?method=artist.getinfo&artist=${name}&api_key=${LASTFM_API_KEY}&format=json`)
-    return artistDetailsXform(response.data.artist)
+    return response.data.artist ? artistDetailsXform(response.data.artist) : {};
   } catch (err) {
     console.log(err)
   }
@@ -30,7 +30,7 @@ export const getArtistDetails = async (name: string) => {
 export const getTopAlbums = async (name: string) => {
   try {
     const response = await lastfm.get<ILastFmAlbumResponse>(`?method=artist.gettopalbums&artist=${name}&api_key=${LASTFM_API_KEY}&format=json`)
-    return response.data.topalbums.album.map(albumXform);
+    return response.data?.topalbums?.album?.map(albumXform) || [];
   } catch (err) {
     console.log(err)
   }
