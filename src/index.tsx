@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { IArtist, IObjectOf, OrderByOption, IArtistInfo } from './api';
 import { fetchArtists, fetchTopArtists, fetchArtistDetails, fetchTopAlbums } from './fetch';
 import { artistInfoReducer, actionCreators, ArtistInfoAction } from './artistInfoStore';
-import { ArtistCard } from './components';
-import { Filters } from './components/Filters';
+import { ArtistCard, Filters, SearchBar } from './components';
 
 const App = () => {
 	// State
@@ -78,14 +77,18 @@ const App = () => {
 		setOrderBy(value);
 	}, [setOrderBy])
 
+	const handleSearchClear = useCallback(() => {
+		setSearch('')
+		setArtists([])
+	}, [setSearch, setArtists])
+
 	return (
 		<div className='container app-wrapper'>
-			<input
-				className={`input search-bar ${loading ? 'loading-background' : ''}`}
-				type='text'
-				placeholder='Search artists'
+			<SearchBar
 				value={search}
-				onChange={handleSearchChange}
+				isSearching={loading}
+				onSearch={handleSearchChange}
+				onClear={handleSearchClear}
 			/>
 			<div className={`${artistClass} box`}>
 			{

@@ -20,16 +20,31 @@ body {
     animation: fadeIn 750ms;
 }
 
-.search-bar {
-    color: var(--gradient-two);
-    font-size: 28px;
-    margin-bottom: 0.25rem;
-}
-
 @media (max-width: 450px) {
     .app-wrapper {
         padding: 2rem;
     }
+}
+
+/* SearchBar component */
+.search-bar-wrapper {
+    display: flex;
+}
+
+.search-bar-wrapper input {
+    color: var(--gradient-two);
+    font-size: 28px;
+    margin-bottom: 0.25rem;
+    padding-right: 50px;
+}
+
+.search-bar-wrapper img {
+    width: 20px;
+    height: 20px;
+    margin-left: -50px;
+    margin-top: 25px;
+    z-index: 1;
+    cursor: pointer;
 }
 
 /* ArtistCard component */
