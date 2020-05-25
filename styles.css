@@ -179,6 +179,19 @@ body {
     }
 }
 
+@keyframes slideUp {
+    from {
+        transform-origin: top;
+        max-height: 800px;
+        /* transform: scaleY(1); */
+    }
+    to {
+        transform-origin: top;
+        max-height: 0;
+        /* transform: scaleY(0); */
+    }
+}
+
 @keyframes loadingBackground {
     0% {
         background-image: linear-gradient(to right, rgb(132,28,59,0.3) 0%, white 5%);
@@ -225,4 +238,8 @@ body {
 
 .fade-in {
     animation: fadeIn 500ms;
+}
+
+.slide-up {
+    animation: slideUp 0.5s forwards ease-out;
 }

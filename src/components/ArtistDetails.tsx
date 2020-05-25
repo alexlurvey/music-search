@@ -3,10 +3,11 @@ import { IArtistInfo, IImage, IAlbum } from '../api';
 import { useClientWidth } from '../hooks';
 
 export interface IArtistDetailsProps {
+    className?: string;
     artistInfo: IArtistInfo;
 }
 
-export const ArtistDetails = React.memo(({ artistInfo: { details, topAlbums} }: IArtistDetailsProps) => {
+export const ArtistDetails = ({ className, artistInfo: { details, topAlbums} }: IArtistDetailsProps) => {
     const [ _, { isExtraSmall, isPhone } ] = useClientWidth();
 
     const albumUrls: ({ albumUrl: string } & IImage)[] = useMemo(() => {
@@ -21,7 +22,7 @@ export const ArtistDetails = React.memo(({ artistInfo: { details, topAlbums} }: 
     }, [topAlbums, isExtraSmall, isPhone])
 
     return (
-        <div className='artist-details-wrapper'>
+        <div className={`artist-details-wrapper ${className}`}>
             <p>{details.bio.summary}</p>
             <div className='album-images-wrapper'>
                 { albumUrls.map((a) => <a href={a.albumUrl} target='_blank'><img src={a.url} /></a> ) }
@@ -44,4 +45,4 @@ export const ArtistDetails = React.memo(({ artistInfo: { details, topAlbums} }: 
             </div>
         </div>
     )
-})
+}

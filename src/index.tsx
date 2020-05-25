@@ -70,7 +70,7 @@ const App = () => {
 			dispatch(actionCreators.addDetails(name, deets))
 			dispatch(actionCreators.addTopAlbums(name, topalbums))
 		}
-		setSelectedArtist(name);
+		setSelectedArtist(prev => name === prev ? undefined : name);
 	}, [artistInfoState, dispatch, setSelectedArtist, setLoadingArtist])
 
 	const handleOrderBySelection = useCallback((value?: OrderByOption) => {
@@ -104,7 +104,8 @@ const App = () => {
 									artistInfo={artistInfoState[a.name]}
 									isSelected={a.name === selectedArtist}
 									isLoading={a.name === loadingArtist}
-								/>) }
+								/>)
+							}
 						</div>
 					) : (
 						<h5 className='title is-5'>
