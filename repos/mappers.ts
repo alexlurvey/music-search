@@ -1,5 +1,5 @@
-import { ILastFmArtist, ILastFmArtistDetails, SimilarArtist } from './api';
-import { IArtist, IArtistDetails } from '../src/api';
+import { ILastFmArtist, ILastFmArtistDetails, ILastFmAlbum, SimilarArtist, IImage } from './api';
+import { IArtist, IArtistDetails, IAlbum } from '../src/api';
 
 export const artistXform = (artist: ILastFmArtist): IArtist => {
     return {
@@ -27,6 +27,17 @@ export const artistDetailsXform = (details: ILastFmArtistDetails): IArtistDetail
       summary: removeLinkTagFromBio(details.bio.summary),
       content: removeLinkTagFromBio(details.bio.content),
     }
+  }
+}
+
+export const albumXform = (album: ILastFmAlbum): IAlbum => {
+  return {
+    name: album.name,
+    url: album.url,
+    image: album.image.map((img: IImage) => ({
+      url: img["#text"],
+      size: img.size,
+    }))
   }
 }
 

@@ -47,3 +47,38 @@ export interface ILastFmArtistDetails {
     },
     bio: ILastFmArtistBio;
 }
+
+export interface IImage {
+    ['#text']: string;
+    size: 'small' | 'medium' | 'large' | 'extralarge';
+}
+
+export interface ILastFmAlbum {
+    name: string;
+    playcount: number;
+    url: string;
+    artist: {
+        name: string;
+        mbid: string;
+        url: string;
+    },
+    image: IImage[];
+}
+
+export interface ILastFmAlbumResponse {
+    topalbums: {
+        album: ILastFmAlbum[];
+    }
+}
+
+export interface ILastFmArtistDetailsResponse {
+    artist: ILastFmArtistDetails;
+}
+
+export interface ILastFmArtistSearchResponse {
+    results: {
+        artistmatches: {
+            artist: ILastFmArtist[]
+        }
+    }
+}

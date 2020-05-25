@@ -32,3 +32,18 @@ export enum OrderByOption {
     Listeners = 'listeners',
     Name = 'name',
 }
+
+export interface IImage {
+    url: string;
+    size: 'small' | 'medium' | 'large' | 'extralarge';
+}
+export interface IAlbum {
+    name: string;
+    url: string;
+    image: IImage[];
+}
+
+export interface IArtistInfo {
+	details: IArtistDetails,
+	topAlbums: IAlbum[],
+}

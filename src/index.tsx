@@ -1,7 +1,8 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useReducer, useState, Reducer } from 'react';
 import ReactDOM from 'react-dom';
-import { IArtist, IArtistDetails, IObjectOf, OrderByOption } from './api';
-import { fetchArtists, fetchTopArtists, fetchArtistDetails } from './fetch';
+import { IArtist, IObjectOf, OrderByOption, IArtistInfo } from './api';
+import { fetchArtists, fetchTopArtists, fetchArtistDetails, fetchTopAlbums } from './fetch';
+import { artistInfoReducer, actionCreators, ArtistInfoAction } from './artistInfoStore';
 import { ArtistCard } from './components';
 import { Filters } from './components/Filters';
 
@@ -11,11 +12,11 @@ const App = () => {
 	const [ timeoutId, setTimeoutId ] = useState<number>(0);
 	const [ artists, setArtists ] = useState<IArtist[]>([]);
 	const [ artistClass, setArtistClass ] = useState<string>('');
-	const [ details, setDetails ] = useState<IObjectOf<IArtistDetails>>({});
 	const [ selectedArtist, setSelectedArtist ] = useState<string | undefined>();
 	const [ loadingArtist, setLoadingArtist ] = useState<string | undefined>();
 	const [ loading, setLoading ] = useState<boolean>(false);
 	const [ orderBy, setOrderBy ] = useState<OrderByOption | undefined>();
+	const [ artistInfoState, dispatch ] = useReducer<Reducer<IObjectOf<IArtistInfo>, ArtistInfoAction>>(artistInfoReducer, {} as IObjectOf<IArtistInfo>);
 
 	// Derived State
 	const orderedArtists = useMemo(() => {
@@ -61,13 +62,17 @@ const App = () => {
 	}, [setArtists, setLoading])
 
 	const onArtistClick = useCallback(async (name: string) => {
-		if (!details[name]) {
+		if (!artistInfoState[name]) {
 			setLoadingArtist(name);
-			const deets = await fetchArtistDetails(name);
-			setDetails({ ...details, [name]: deets })
+			const [ deets, topalbums ] = await Promise.all([
+				fetchArtistDetails(name),
+				fetchTopAlbums(name)],
+			);
+			dispatch(actionCreators.addDetails(name, deets))
+			dispatch(actionCreators.addTopAlbums(name, topalbums))
 		}
 		setSelectedArtist(name);
-	}, [details, setDetails, setSelectedArtist, setLoadingArtist])
+	}, [artistInfoState, dispatch, setSelectedArtist, setLoadingArtist])
 
 	const handleOrderBySelection = useCallback((value?: OrderByOption) => {
 		setOrderBy(value);
@@ -93,7 +98,7 @@ const App = () => {
 									key={a.id || a.name}
 									artist={a}
 									onClick={onArtistClick}
-									details={details[a.name]}
+									artistInfo={artistInfoState[a.name]}
 									isSelected={a.name === selectedArtist}
 									isLoading={a.name === loadingArtist}
 								/>) }
