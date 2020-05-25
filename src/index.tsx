@@ -8,14 +8,15 @@ import { ArtistCard, Filters, SearchBar } from './components';
 const App = () => {
 	// State
 	const [ search, setSearch ] = useState<string>('');
-	const [ timeoutId, setTimeoutId ] = useState<number>(0);
+	const [ artistInfoState, dispatch ] = useReducer<Reducer<IObjectOf<IArtistInfo>, ArtistInfoAction>>(artistInfoReducer, {} as IObjectOf<IArtistInfo>);
 	const [ artists, setArtists ] = useState<IArtist[]>([]);
-	const [ artistClass, setArtistClass ] = useState<string>('');
 	const [ selectedArtist, setSelectedArtist ] = useState<string | undefined>();
+	const [ orderBy, setOrderBy ] = useState<OrderByOption | undefined>();
+	// CSS related state
+	const [ timeoutId, setTimeoutId ] = useState<number>(0);
+	const [ artistClass, setArtistClass ] = useState<string>('');
 	const [ loadingArtist, setLoadingArtist ] = useState<string | undefined>();
 	const [ loading, setLoading ] = useState<boolean>(false);
-	const [ orderBy, setOrderBy ] = useState<OrderByOption | undefined>();
-	const [ artistInfoState, dispatch ] = useReducer<Reducer<IObjectOf<IArtistInfo>, ArtistInfoAction>>(artistInfoReducer, {} as IObjectOf<IArtistInfo>);
 
 	// Derived State
 	const orderedArtists = useMemo(() => {
