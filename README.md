@@ -2,7 +2,7 @@
 Query artist information using [last.fm's](https://www.last.fm/api/) API
 
 ### Features
-- Search by name or get the top artist list. Returns a list of 30 (no further paging, but that's what I was going to add next).
+- Search by name or get the top artist list. Returns a list of 30 (no further paging, but that's what I was going to add next). There may not be any data if a search result refers to a single or a lesser known band in which case you'll just see an empty section underneath the artist.
 - Order by name or listener count. Clearing those filters return the original search list ordering returned by last.fm.
 - Any images will link to a last.fm page.
 
@@ -10,6 +10,7 @@ Query artist information using [last.fm's](https://www.last.fm/api/) API
 - All state is kept in [index.tsx](./src/index.tsx).
 - Two API calls are made to get the artist info (`api/artist/${name}`, `api/artist/${name}/topalbums`). These responses are stored in an object keyed by artist name and controlled by the reducer pattern [here](./src/artistInfoStore.ts).
 - All styling is in one [file](./styles.css) - would probably move styles alongside the components and/or use some styling library for anything larger.
+- [Bluma](https://bulma.io/) is used for some styling. 
 
 ### Directory Structure
 - `api`: serverless functions that match the endpoints found in [server.ts](./server.ts) for deployment on the [vercel](https://vercel.com/) platform.
