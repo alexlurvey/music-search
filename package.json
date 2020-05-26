@@ -1,15 +1,14 @@
 {
   "name": "wantable-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "query last.fm data",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "build": "parcel build src/index.tsx -d public && yarn copy",
     "copy": "cp index.html public && cp node_modules/bulma/css/bulma.min.css public && cp styles.css public && cp assets/* public",
     "dev": "yarn build && ts-node server.ts"
   },
-  "author": "",
+  "author": "Alex Lurvey",
   "license": "ISC",
   "devDependencies": {
     "@now/node": "^1.6.1",

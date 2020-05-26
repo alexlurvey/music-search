@@ -16,7 +16,7 @@ body {
 .app-wrapper {
     padding: 3rem;
     min-height: 100vh;
-    max-width: 1200px;
+    max-width: 1100px;
     animation: fadeIn 750ms;
 }
 
@@ -97,7 +97,7 @@ body {
 
 .artist-details-wrapper {
     padding-top: 1rem;
-    border-top: solid black 1px;
+    border-top: solid var(--gradient-two) 1px;
     transform: scaleY(0);
     animation: slideDown 0.5s forwards;
 }
