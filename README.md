@@ -26,3 +26,8 @@ git clone https://github.com/alexlurvey/wantable-app.git && cd wantable-app
 yarn install
 yarn dev
 ```
+also create a `.env` file in to root directory containing
+```
+LASTFM_BASE_URL=http://ws.audioscrobbler.com/2.0/
+LASTFM_API_KEY=<YOUR_API_KEY>
+```
