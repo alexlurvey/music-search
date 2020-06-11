@@ -1,5 +1,5 @@
 # Music Search
-Query artist information using [last.fm's](https://www.last.fm/api/) API
+Demo app to showcase a React app. Queries artist information using [last.fm's](https://www.last.fm/api/) API.
 
 ### Features
 - Search by name or get the top artist list. Returns a list of 30 (no further paging, but that's what I was going to add next). There may not be any data if a search result refers to a single or a lesser known band in which case you'll just see an empty section underneath the artist.
