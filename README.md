@@ -22,7 +22,7 @@ Demo app to showcase a React frontend. Queries artist information using [last.fm
 
 ### Running Locally
 ```
-git clone https://github.com/alexlurvey/wantable-app.git && cd wantable-app
+git clone https://github.com/alexlurvey/music-search.git && cd music-search
 yarn install
 yarn dev
 ```
