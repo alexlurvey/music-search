@@ -4,7 +4,7 @@
   "description": "query last.fm data",
   "scripts": {
     "build": "yarn copy && webpack --mode production",
-    "copy": "cross-env mkdir -p dist && cross-env cp assets/* styles.css index.html node_modules/bulma/css/bulma.min.css dist",
+    "copy": "cross-env mkdir -p public && cross-env cp assets/* styles.css index.html node_modules/bulma/css/bulma.min.css public",
     "dev": "yarn copy && webpack && ts-node server.ts"
   },
   "author": "Alex Lurvey",
