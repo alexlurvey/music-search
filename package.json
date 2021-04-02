@@ -2,25 +2,30 @@
   "name": "wantable-app",
   "version": "1.0.0",
   "description": "query last.fm data",
-  "type": "module",
   "scripts": {
-    "build": "parcel build src/index.tsx -d public && yarn copy",
-    "copy": "cp index.html public && cp node_modules/bulma/css/bulma.min.css public && cp styles.css public && cp assets/* public",
-    "dev": "yarn build && ts-node server.ts"
+    "build": "yarn copy && webpack --mode production",
+    "copy": "cross-env mkdir -p dist && cross-env cp assets/* styles.css index.html node_modules/bulma/css/bulma.min.css dist",
+    "dev": "yarn copy && webpack && ts-node server.ts"
   },
   "author": "Alex Lurvey",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
     "@types/express": "^4.17.8",
     "@types/node": "^14.11.2",
     "@types/react": "^16.9.50",
     "@types/react-dom": "^16.9.8",
     "@vercel/node": "^1.8.3",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "custom-env": "^2.0.1",
-    "parcel-bundler": "^1.12.4",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.1",
-    "typescript": "^3.9.3"
+    "typescript": "^4.2.3",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
   },
   "dependencies": {
     "axios": "^0.21.1",

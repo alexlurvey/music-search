@@ -25,5 +25,5 @@ app.get('/api/artist/:name/topalbums', async (req: Request, res: Response) => {
   res.status(200).send(albums);
 })
 
-app.use(express.static('public'))
+app.use(express.static('dist'))
 app.listen(3000)
