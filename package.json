@@ -2,6 +2,9 @@
   "name": "wantable-app",
   "version": "1.0.0",
   "description": "query last.fm data",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "yarn copy && webpack --mode production",
     "copy": "cross-env mkdir -p public && cross-env cp assets/* styles.css index.html node_modules/bulma/css/bulma.min.css public",
