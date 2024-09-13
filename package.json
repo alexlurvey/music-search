@@ -31,7 +31,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^0.28.0",
     "bulma": "^0.9.1",
     "express": "^4.21.0",
     "react": "^16.13.1",
